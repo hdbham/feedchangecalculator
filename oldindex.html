@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page</title>
+  <link rel="stylesheet" type="text/sass" href="style.css">
+</head>
+
+<body>
+  
+  
+  <div id = "control">
+  <div>
+    <form id="login-form" novalidate>
+    <label for="old-amount">Old Daily recommended feeding amount</label>
+    <input id="old-amount" type="text" placeholder="Enter old amount in cups">
+   <label for="new-amount"></label> New Daily recommended feeding amount
+    <input id="new-amount" type="text" placeholder="Enter new amount in cups">
+      <label for="times-fed">Times Fed:</label>
+      <input id="times-fed" type="text" placeholder="How many feedings per day?">
+    <div>
+      <input class= "btn" type="submit" value="submit" id="submit-button" class="btn btn-default">
+    </div>
+  </form>
+  </div>
+    <button id="print-button" class="btn">print</button>
+  <div id="results">
+    
+  </div>
+
+</body>
+<script src="./node_modules/fraction.js/fraction.js"></script>
+<script src="script.js" type="module"></script>
+
+</html>

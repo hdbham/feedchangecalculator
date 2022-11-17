@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Completed Animated Form</title>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<form id="login-form" novalidate>
+  <label>
+    <input id ="old-amount" type="text" required autocomplete="off"/>
+    <div class="label-text">Old Amount in cups</div>
+  </label>
+  <label>
+    <input id="new-amount" type="text" required autocomplete="off"/>
+    <div class="label-text">New Amount in cups</div>
+  </label>
+  <label>
+    <input  id="times-fed" type="text" required autocomplete="off"/>
+    <div class="label-text">Per day</div>
+  </label>
+  <button class= "btn" type="submit" value="submit" id="submit-button" class="btn btn-default">Submit </button>
+  <button id="print-button" class="btn">print</button>
+</form>
+
+<div id="results">
+    
+</div>
+<!-- partial -->
+  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src="./node_modules/fraction.js/fraction.js"></script>
+  <script src="script.js" type="module"></script>
+</body>
+</html>
