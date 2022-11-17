@@ -79,10 +79,10 @@ function generate(newAmount, oldAmount) {
 <p> New Food: ${convertToFraction(newAmount)} cups </p>`)
 }
 
-form.addEventListener("submit", (event) => {
+form.addEventListener("keyup", (event) => {
   event.preventDefault()
   results.innerHTML = "";
-  generate(newAmount.value / timesFed.value, oldAmount.value / timesFed.value)
+  generate(eval(newAmount.value)/ eval(timesFed.value), eval(oldAmount.value)/ eval(timesFed.value))
 })
 
 

@@ -11,11 +11,17 @@ align-content: center
 }
 
 #results {
-  /* display: none; */
+  display: none;
 }
 
 form {
   text-align: center;
+}
+
+#lower-buttons {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
 }
 
 label {
