@@ -76,9 +76,7 @@ function generate(newAmount, oldAmount) {
 <p> Total: ${convertToFraction(oldAmount * .25 + newAmount *.75)} cups </p>
 
 <p> --- Day 11 --- </p>
-<p> New Food: ${convertToFraction(newAmount)} cups </p>
-<p>____________________________________________________________________</p>`
-)
+<p> New Food: ${convertToFraction(newAmount)} cups </p>`)
 }
 
 form.addEventListener("submit", (event) => {
