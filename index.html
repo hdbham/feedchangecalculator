@@ -10,19 +10,21 @@
 <!-- partial:index.partial.html -->
 <form id="login-form" novalidate>
   <label>
-    <input id ="old-amount" type="text" required autocomplete="off"/>
+    <input id ="old-amount" type="number" step="0.5" required autocomplete="off"/>
     <div class="label-text">Old Amount in cups</div>
   </label>
   <label>
-    <input id="new-amount" type="text" required autocomplete="off"/>
+    <input id="new-amount" type="number" step="0.5" required autocomplete="off"/>
     <div class="label-text">New Amount in cups</div>
   </label>
   <label>
-    <input  id="times-fed" type="text" required autocomplete="off"/>
+    <input  id="times-fed" type="number" min="1" max="4" required autocomplete="off"/>
     <div class="label-text">Per day</div>
   </label>
   <button class= "btn" type="submit" value="submit" id="submit-button" class="btn btn-default">Submit </button>
   <button id="print-button" class="btn">print</button>
+  <button id="email-button" class="btn">email</button>
+
 </form>
 
 <div id="results">

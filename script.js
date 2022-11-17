@@ -16,22 +16,17 @@ function printDiv(divId, title){
   mywindow.document.write('</body></html>');
   mywindow.document.write(`<script>print()</script>`)
   mywindow.document.print()
-  
   mywindow.close();
   return true;
 }
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault()
-  results.innerHTML = "";
-  calculate(newAmount.value / timesFed.value, oldAmount.value / timesFed.value)
-  printDiv('results','FeedingGuide')
-})
+let subject = "subject";
 
+function emaildiv(div, email ){
+  control.insertAdjacentHTML("beforeend",
+  `<a href="mailto:${email}subject=${subject}&body=${body}">Send email</a>`)
 
-printButton.addEventListener("click", () => {
-  printDiv('results', 'feedingguide');
-})
+}
 
 function convertToFraction (decimal) {
   // Round to the nearest 1/8th
@@ -40,10 +35,10 @@ function convertToFraction (decimal) {
   return newVal;
 }
 
-function calculate(newAmount, oldAmount) {
+function generate(newAmount, oldAmount) {
   
   if (oldAmount > newAmount) {
-
+    
     console.log(`
     Nutrient Density Comparison
     New Food More Nutrient Dense
@@ -57,21 +52,20 @@ function calculate(newAmount, oldAmount) {
     ${newAmount / oldAmount} : 1 `)
   }
   
+  
+  results.insertAdjacentHTML("beforeend", `
+  <p>Times fed: ${timesFed.value}</p>
+  
+  <p>PER FEEDING <p>
+  <p>Total current: ${oldAmount} cups<p>
+  
+  <p>--- First 3 days --- <p>
 
-results.insertAdjacentHTML("beforeend", `
-
-<p>Times fed: ${timesFed.value}</p>
-
-<p>PER FEEDING <p>
-<p>Total current: ${oldAmount} cups<p>
-
-<p>--- First 3 days --- <p>
-
-<p> Old Food: ${convertToFraction(oldAmount * .75)} cups </p>
-<p> New Food: ${convertToFraction(newAmount * .25)} cups </p>
-<p> Total: ${convertToFraction(oldAmount * .75 + newAmount *.25)} cups </p>
-
-<p> --- Days 4 - 7 --- </p>
+  <p> Old Food: ${convertToFraction(oldAmount * .75)} cups </p>
+  <p> New Food: ${convertToFraction(newAmount * .25)} cups </p>
+  <p> Total: ${convertToFraction(oldAmount * .75 + newAmount *.25)} cups </p>
+  
+  <p> --- Days 4 - 7 --- </p>
 <p> Old Food: ${convertToFraction(oldAmount * .50)} cups </p>
 <p> New Food: ${convertToFraction(newAmount * .50)} cups </p>
 <p> Total: ${convertToFraction(oldAmount * .5 + newAmount *.5)} cups </p>
@@ -86,5 +80,20 @@ results.insertAdjacentHTML("beforeend", `
 <p>____________________________________________________________________</p>`
 )
 }
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault()
+  results.innerHTML = "";
+  generate(newAmount.value / timesFed.value, oldAmount.value / timesFed.value)
+})
+
+
+printButton.addEventListener("click", () => {
+  printDiv('results', 'feedingguide');
+})
+
+emailButton.addEventListener("click", () => {
+  emailDiv(results);
+})
 
 

@@ -11,7 +11,7 @@ align-content: center
 }
 
 #results {
-  display: none;
+  /* display: none; */
 }
 
 form {
