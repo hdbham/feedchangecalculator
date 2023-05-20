@@ -4,4 +4,5 @@ The app handles mixed fraction inputs, converts them to decimal numbers, and cal
 
 Reason for making this:
 I didn't want my dogs stomach to hurt when I changed his food. I started with pseudocode and a white board and decided to make a webapp to help other people! 
+
 [demo](https://hdbham.github.io/feedchangecalculator/)
