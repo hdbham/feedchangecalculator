@@ -1,4 +1,4 @@
-This GitHub repository contains a web application for calculating and generating feeding guides for pets.
+This GitHub repository contains a widget for calculating and generating feeding guides for pets.
 
 The app handles mixed fraction inputs, converts them to decimal numbers, and calculates feeding amounts for different days based on new guidelines. The results are rendered to a page that can be printed to assist customers.
 
