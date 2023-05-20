@@ -1,3 +1,4 @@
+
 const form = document.querySelector('#login-form')
 const control = document.querySelector('#control')
 const oldAmount = document.querySelector('#old-amount')
@@ -28,17 +29,30 @@ function emaildiv(div, email ){
 
 }
 
-function convertToFraction (decimal) {
+function convertToFraction(decimal) {
   // Round to the nearest 1/8th
   var rounded = (Math.ceil(decimal * 8) / 8).toFixed(8);
   var newVal = new Fraction(rounded).toFraction(true);
   return newVal;
 }
 
+// Function to convert mixed fractions to decimals
+function mixedFractionToDecimal(mixedFraction) {
+  // Split the mixed fraction into whole number and fraction parts
+  const parts = mixedFraction.split(' ');
+  const whole = parseInt(parts[0]);
+  const fraction = parts[1];
+
+  // Convert the fraction part to a decimal using the fraction.js library
+  const decimal = new Fraction(fraction).valueOf();
+
+  // Calculate the decimal representation of the mixed fraction
+  const result = whole + decimal;
+  return result;
+}
+
 function generate(newAmount, oldAmount) {
-  
   if (oldAmount > newAmount) {
-    
     console.log(`
     Nutrient Density Comparison
     New Food More Nutrient Dense
@@ -51,8 +65,7 @@ function generate(newAmount, oldAmount) {
     New : Old
     ${newAmount / oldAmount} : 1 `)
   }
-  
-  
+
   results.insertAdjacentHTML("beforeend", `
   <p>Times fed: ${timesFed.value}</p>
   
@@ -66,32 +79,32 @@ function generate(newAmount, oldAmount) {
   <p> Total: ${convertToFraction(oldAmount * .75 + newAmount *.25)} cups </p>
   
   <p> --- Days 4 - 7 --- </p>
-<p> Old Food: ${convertToFraction(oldAmount * .50)} cups </p>
-<p> New Food: ${convertToFraction(newAmount * .50)} cups </p>
-<p> Total: ${convertToFraction(oldAmount * .5 + newAmount *.5)} cups </p>
+  <p> Old Food: ${convertToFraction(oldAmount * .50)} cups </p>
+  <p> New Food: ${convertToFraction(newAmount * .50)} cups </p>
+  <p> Total: ${convertToFraction(oldAmount * .5 + newAmount *.5)} cups </p>
 
-<p> --- Days 8 - 10 --- </p>
-<p> Old Food: ${convertToFraction(oldAmount * .25)} cups </p>
-<p> New Food: ${convertToFraction(newAmount * .75)} cups </p>
-<p> Total: ${convertToFraction(oldAmount * .25 + newAmount *.75)} cups </p>
+  <p> --- Days 8 - 10 --- </p>
+  <p> Old Food: ${convertToFraction(oldAmount * .25)} cups </p>
+  <p> New Food: ${convertToFraction(newAmount * .75)} cups </p>
+  <p> Total: ${convertToFraction(oldAmount * .25 + newAmount *.75)} cups </p>
 
-<p> --- Day 11 --- </p>
-<p> New Food: ${convertToFraction(newAmount)} cups </p>`)
+  <p> --- Day 11 --- </p>
+  <p> New Food: ${convertToFraction(newAmount)} cups </p>`)
 }
 
 form.addEventListener("keyup", (event) => {
   event.preventDefault()
   results.innerHTML = "";
-  generate(eval(newAmount.value)/ eval(timesFed.value), eval(oldAmount.value)/ eval(timesFed.value))
-})
-
+  generate(
+    mixedFractionToDecimal(newAmount.value) / mixedFractionToDecimal(timesFed.value),
+    mixedFractionToDecimal(oldAmount.value) / mixedFractionToDecimal(timesFed.value)
+  );
+});
 
 printButton.addEventListener("click", () => {
   printDiv('results', 'feedingguide');
-})
+});
 
 emailButton.addEventListener("click", () => {
   emailDiv(results);
-})
-
-
+});
